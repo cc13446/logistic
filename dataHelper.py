@@ -28,9 +28,9 @@ def get_input_test():
     return load_json
 
 
-def output_test(data, label):
+def output_test(data, label, path):
     output_json = []
     for i in range(0, len(data)):
         output_json.append([data[i], label[i]])
-    with open('testset.json', 'w') as f:
+    with open(path, 'w') as f:
         json.dump(output_json, f)
