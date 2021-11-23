@@ -43,6 +43,20 @@ class Logistic:
     _train_accuracy = 0
     _valid_accuracy = 0
 
+    def get_test_label(self, test_data):
+        local_test_data = []
+        for i in range(0, len(test_data)):
+            local_test_data.append(np.append(np.array([1.0]), test_data[i]))
+        test_data_mat = mat(local_test_data)
+        result = test_data_mat * self._T
+        res = []
+        for i in range(0, len(result)):
+            if result[i][0] >= 0.5:
+                res.append(1)
+            elif result[i][0] < 0.5:
+                res.append(0)
+        return res
+
     def get_dev_loss(self):
         return self._valid_loss
 

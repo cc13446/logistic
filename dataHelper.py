@@ -21,3 +21,16 @@ def get_input_dev():
         label.append(j[1])
 
     return data, label
+
+
+def get_input_test():
+    load_json = json.load(open('resource/testset.json'))
+    return load_json
+
+
+def output_test(data, label):
+    output_json = []
+    for i in range(0, len(data)):
+        output_json.append([data[i], label[i]])
+    with open('testset.json', 'w') as f:
+        json.dump(output_json, f)
